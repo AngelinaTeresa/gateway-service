@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      routes:
+        - id: cart
+          uri: lb://cart
+          predicates:
+            - Path=/cart/**
+        - id: product
+          uri: lb://product
+          predicates:
+            - Path=/products/**
+
+server:
+  port: 8080
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost

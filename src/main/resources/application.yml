@@ -5,16 +5,27 @@ spring:
   cloud:
     discovery:
       enabled: true
-    gateway:
-      routes:
-        - id: cart
-          uri: lb://cart
-          predicates:
-            - Path=/cart/**
-        - id: product
-          uri: lb://product
-          predicates:
-            - Path=/products/**
+#    gateway:
+#      routes:
+#        - id: cart
+#          uri: lb://cart
+#          predicates:
+#            - Path=/cart/**
+#        - id: product
+#          uri: lb://product
+#          predicates:
+#            - Path=/products/**
+#        - id: user
+#          uri: lb://user
+#          predicates:
+#            - Path=/user/**
+
+#secret key - should be encrypted
+jwt:
+  secret: QW5nZWxpbmFUZXJlc2FTYW1wbGVTZWNyZXRLZXlGb3JVc2VjYXNld2hpY2hzaG91bGRiZWdyZWF0ZXJ0aGFuNTIwYml0c2FuZCBoZW5jZSBtYWtpbmdpdGxlbmd0aHkK==
+  #3 minutes validity
+  token:
+    validity: 180000
 
 server:
   port: 8080
